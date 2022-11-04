@@ -1,4 +1,5 @@
 node_modules
-
+# ignore for security purposes
+docker-compose.yml
 # Fuck MacOS
 .DS_Store
