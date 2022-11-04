@@ -1,1 +1,4 @@
 node_modules
+
+# Fuck MacOS
+.DS_Store
