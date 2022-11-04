@@ -7,4 +7,4 @@ services:
     environment:
       - DISCORD_TOKEN=
       - NOTION_KEY=
-      - NOTION＿DB=
+      - NOTION_DB=

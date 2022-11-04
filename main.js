@@ -3,7 +3,7 @@ const Notion = require("@notionhq/client")
 
 const notion = new Notion.Client({auth: process.env.NOTION_KEY})
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
-const NOTION_DATABASE_ID = process.env.NOTION＿DB
+const NOTION_DATABASE_ID = process.env.NOTION_DB
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
