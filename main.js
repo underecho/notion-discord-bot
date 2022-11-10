@@ -1,3 +1,4 @@
+const Discord = require("discord.js")
 const {Client, GatewayIntentBits} = require("discord.js")
 const Notion = require("@notionhq/client")
 
@@ -23,18 +24,38 @@ client.on("messageCreate", async message => {
     }
 })
 
+// client.on("channelCreate", async (channel) => {
+//     if (channel.type === 0) {
+//         console.log("Text Channel Created.", channel.name)
+//         const url = await addItem(channel.name)
+//         if(url) {
+//             channel.send("Notionのページを作成しました！ \n" + url)
+//         } else {
+//             channel.send("Notionのページを作成できませんでした。")
+//         }
+//     }
+// })
+
 client.on("channelCreate", async (channel) => {
     if (channel.type === 0) {
         console.log("Text Channel Created.", channel.name)
         const url = await addItem(channel.name)
         if(url) {
-            channel.send("Notionのページを作成しました！ \n" + url)
+            const tic1 = new Discord.MessageButton()
+             .setCustomId("NotionLink") //buttonにIDを割り当てる   *必須
+             .setStyle("LINK") //buttonのstyleを設定する  *必須
+             .setURL(url)
+             .setLabel("Notion")
+            await channel.send({
+                content: "Notionのページを作成しました！",
+                components: [new Discord.MessageActionRow().addComponents(tic1)]
+            });
+            // channel.send("Notionのページを作成しました！ \n" + url)
         } else {
             channel.send("Notionのページを作成できませんでした。")
         }
     }
 })
-
 
 const addItem = async (text) => {
     try {
